@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <title>for Linara</title>
+</head>
+
+<body>
+    <div id="preloader">
+        <h1 class="loading-text">LOADING</h1>
+    </div>
+     <div class="cursor">
+        <div class="cursor-vertical"></div>
+    </div>
+    <div class="container">
+        <div class="paper"></div>
+        <div class="envelope"></div>
+        <div>
+            <h1 class="text">
+                <span>С ДНЕМ</span>
+                <span class="stroke" id="birthdayWord">
+                    <span>Р</span>
+                    <span>О</span>
+                    <span>Ж</span>
+                    <span>Д</span>
+                    <span>Е</span>
+                    <span>Н</span>
+                    <span>И</span>
+                    <span>Я</span>
+                    <span>!</span>
+                </span> <!-- пробел убран -->
+            </h1>
+            <div class="love">
+                <h2>С любовью</h2>
+                <h2>Je taim</h2>
+                <h2>With love</h2>
+            </div>
+            <div>
+                <p class="you">The morning light is turning blue, the feeling is bizarre (Bizarre)<br>
+                    The night is almost over, I still don't know where you are<br>
+                    The shadows, yeah, they keep me pretty like a movie star<br>
+                    Daylight makes me feel like Dracula (Dracula)<br>
+                    In the end, I hope it's you and me<br>
+                    In the darkness, I would never leave<br>
+                    You won't ever see me in the light of day<br>
+                    It's far too late, the time has come</p>
+            </div>
+            <audio id="birthdayMusic" loop>
+                <source src="musik.mp3" type="audio/mpeg">
+                Твой браузер не поддерживает аудио
+            </audio>
+            <!-- Кнопка управления (опционально) -->
+            <button id="musicControl" class="music-btn">Play</button>
+        </div>
+        <!-- Галерея изображений -->
+       <div class="gallery-container">
+    <div class="gallery-slider">
+        <div class="gallery-track">
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/47/73/bd/4773bd591aa0426d42bffd8c67dfbe92.jpg" alt="Samurai">
+                <p>Жуля</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/originals/31/75/56/317556d9e313d484de90629f146b3e98.gif" alt="Oni">
+                <p>Юму</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/f9/38/c4/f938c4857b243d11728b9cd3607bacd2.jpg" alt="Hannya">
+                <p>Хання</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/2f/ed/c1/2fedc10cbc4d636644205fc98daa3cd9.jpg" alt="Tengu">
+                <p>Тэнгу</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/b5/2a/6c/b52a6c42f636a29ac91b8e7537c759f5.jpg" alt="Hyottoko">
+                <p>Хёттоко</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/49/50/16/495016f6ad6626455747a03d7568f792.jpg" alt="Namahage">
+                <p>Намахаге</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/46/6d/27/466d27f6d3dd77114eafde1fc61a7df9.jpg" alt="Kitsune">
+                <p>Кицунэ</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/1200x/3d/66/dd/3d66dda820109f8ab74b83bcbd859918.jpg" alt="Okame">
+                <p>Окамэ</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/b5/18/41/b5184171fd55fc19e78ef17459bdd908.jpg" alt="Ultraman">
+                <p>Ультрамен</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/1200x/dc/4c/d6/dc4cd602cc336542ffbb23f3a83ccac0.jpg" alt="Komainu">
+                <p>Комаину</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/1200x/9b/32/51/9b3251b79d0ba88bc5ee397f44b6b542.jpg" alt="Animegao">
+                <p>Анимэгао</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/1200x/d2/d0/b7/d2d0b72c231f4be327d8a1a1d7384f59.jpg" alt="Kappa">
+                <p>Каппа</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/15/d9/a4/15d9a44343b606f77c6afd2376d31050.jpg" alt="Noh">
+                <p>Но</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/1200x/e2/b9/b8/e2b9b854ca1443c91f10aeb97656551b.jpg" alt="Kendo">
+                <p>Кендо</p>
+            </div>
+        </div>
+    </div>
+    <!-- Добавляем ползунок -->
+    <div class="gallery-slider-control">
+        <input type="range" class="gallery-range" min="0" max="13" value="0" step="1">
+        <div class="gallery-range-lines">
+            <!-- Линии будут созданы через JavaScript -->
+        </div>
+    </div>
+</div>
+</div>
+    </div>
+    <div class="page2">
+        <h2 class="page2-title">Выбери своего бойца</h2>
+        <div class="page2-grid">
+        <div class="inventory-grid">
+            
+            <!-- РЯД 1 (8 ячеек) -->
+            <div class="inventory-cell" data-name="Лиана">
+                <img src="image/lain.jpg" 
+                    alt="Лиана">
+            </div>
+            <div class="inventory-cell empty"></div>
+            <div class="inventory-cell" data-name="Вася">
+                <img src="https://i.pinimg.com/1200x/38/e9/3e/38e93e07aad7d19d8bab7f7a10d9775f.jpg" 
+                alt="Вася">
+            </div>
+            <div class="inventory-cell empty"></div>
+            <div class="inventory-cell" data-name="Ильшат">
+                <img src="image/bro.jpg" alt="Ильшат">
+            </div>
+            <div class="inventory-cell empty"></div>
+            <div class="inventory-cell" data-name="Зария">
+                <img src="image/zor.jpg" alt="Зария">
+            </div>
+            
+            <!-- РЯД 2 (8 ячеек) -->
+            <div class="inventory-cell" data-name="Родители">
+                <img src="image/pama.jpg" alt="Родители">
+            </div>
+            <div class="inventory-cell empty"></div>
+            <div class="inventory-cell" data-name="Деля">
+                <img src="image/dela.jpg" alt="Деля">
+            </div>
+            <div class="inventory-cell empty"></div>
+            <div class="inventory-cell" data-name="Петя">
+                <img src="https://i.pinimg.com/736x/e1/b5/d3/e1b5d3b3ee39d1ed1a594822615ecff0.jpg" alt="Петя">
+            </div>
+            <div class="inventory-cell empty"></div>
+            <div class="inventory-cell" data-name="Яна">
+                <img src="image/yanat.jpg" alt="Яна">
+            </div>
+            <div class="inventory-cell empty"></div>
+            <div class="inventory-cell" data-name="Сеня">
+                <img src="image/senya.jpg" alt="Сеня">
+            </div>
+            
+            <!-- РЯД 3 (8 ячеек) -->
+            <div class="inventory-cell" data-name="Даша">
+                <img src="image/dasha.jpg" alt="Даша">
+            </div>
+            <div class="inventory-cell empty"></div>
+            <div class="inventory-cell" data-name="Андрей">
+                <img src="https://i.pinimg.com/736x/1d/bf/9f/1dbf9f78431418a417588dc12d86c395.jpg" alt="Андрей">
+            </div>
+            <div class="inventory-cell" data-name="Милена">
+                <img src="image/mil.jpg" alt="Милена">
+            </div>
+            <div class="inventory-cell empty"></div>
+            <div class="inventory-cell" data-name="Бабушка">
+                <img src="image/bab.png" alt="Бабушка">
+            </div>
+            <div class="inventory-cell empty"></div>
+            <div class="inventory-cell" data-name="Яна г">
+                <img src="image/yanag.jpg" alt="Яна г">
+            </div>
+        
+        </div>
+    </div>
+    <!-- МУЗЫКАЛЬНЫЙ ПЛЕЕР С ЛИСТОМ МАСОК -->
+    <div class="mask-player" id="maskPlayer">
+        <div class="mask-player-container">
+            <!-- Кнопка закрытия -->
+            <button class="player-close-btn" id="closeMaskPlayer">✕</button>
+            
+            <!-- Левая колонка - большая картинка -->
+            <div class="player-left">
+                <div class="player-large-image">
+                    <img id="playerLargeImage" src="" alt="Selected mask">
+                    <div class="player-large-overlay">
+                        <h3 id="playerLargeName">Самурай</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Средняя колонка - горизонтальный список масок -->
+            <div class="player-middle">
+                <div class="mask-horizontal-list" id="maskHorizontalList">
+                    <!-- Список будет заполняться JavaScript -->
+                </div>
+            </div>
+            <div class="player-video" id="playerVideo">
+            <div class="video-wrapper">
+                <video id="maskVideo" preload="metadata"></video>
+
+                <div class="player-controls video-player-controls">
+
+                    <div class="video-controls">
+                        <button id="videoBackBtn">⇆ ◁</button>
+                        <button id="videoStopBtn">❚❚</button>
+                        <button id="videoForwardBtn">▷  ↻</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- Правая колонка - голосовые сообщения -->
+            <div class="player-right">
+                <h4>Голосовые сообщения</h4>
+                <div class="voice-list" id="voiceList">
+                    <!-- Голосовые сообщения будут заполняться -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+     <script src="index.js"></script>
+     
+</body>
+</html>
