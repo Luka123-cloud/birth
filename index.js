@@ -372,16 +372,16 @@ document.addEventListener('DOMContentLoaded', function () {
     
     const masksData = [
         { name: 'Лиана', image: 'image/lain.jpg', type: 'Воин' },
-        { name: 'Вася', image: 'https://i.pinimg.com/1200x/38/e9/3e/38e93e07aad7d19d8bab7f7a10d9775f.jpg', type: 'Демон' },
+        { name: 'Вася', image: 'image/vasya.jpg', type: 'Демон' },
         { name: 'Ильшат', image: 'image/bro.jpg', type: 'Ревность' },
         { name: 'Родители', image: 'image/pama.jpg', type: 'Дух' },
         { name: 'Зария', image: 'image/zor.jpg', type: 'Комедия' },
         { name: 'Деля', image: 'image/dela.jpg', type: 'Оборотень' },
-        { name: 'Петя', image: 'https://i.pinimg.com/736x/e1/b5/d3/e1b5d3b3ee39d1ed1a594822615ecff0.jpg', type: 'Лиса' },
+        { name: 'kusok2005', image: 'image/anon.jpg', type: 'Лиса' },
         { name: 'Яна', image: 'image/yanat.jpg', type: 'Тарабаркина' },
         { name: 'Сеня', image: 'image/senya.jpg', type: 'Герой' },
         { name: 'Даша', image: 'image/dasha.jpg', type: 'Стражи' },
-        { name: 'Андрей', image: 'https://i.pinimg.com/736x/1d/bf/9f/1dbf9f78431418a417588dc12d86c395.jpg', type: 'Аниме' },
+        { name: 'Андрей', image: 'image/andr.jpg', type: 'Аниме' },
         { name: 'Милена', image: 'image/mil.jpg', type: 'Миленка' },
         { name: 'Бабушка', image: 'image/bab.png', type: 'Театр' },
         { name: 'Яна г', image: 'image/yanag.jpg', type: 'Герасимова' },
@@ -394,16 +394,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 { name: 'Голосовое сообщение', file: 'sound/lian.mp3', time: '0:26' }
             ]
         },
-        'Вася': {
+        'kusok2005': {
             type: 'audio',
             items: [
-                { name: 'Голосовое сообщение', file: 'try1.m4a', time: '0:08' }
+                { name: 'Голосовое сообщение', file: 'sound/kus.mp3', time: '0:29' }
+            ]
+        },'Вася': {
+            type: 'audio',
+            items: [
+                { name: 'Запись ↓↓↓', file: 'try1.m4a', time: '0:08' }
             ]
         },
-        'Хання': {
+        'Андрей': {
             type: 'audio',
             items: [
-                { name: 'Голосовое сообщение', file: '', time: '0:30' }
+                { name: 'Запись ↓↓↓', file: 'try1.m4a', time: '0:08' }
+            ]
+        }
+        , 'Зария': {
+            type: 'audio',
+            items: [
+                { name: 'Голосовое сообщение', file: 'sound/zar.mp3', time: '0:51' }
             ]
         },
         'Сеня': {
@@ -418,12 +429,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 { name: 'Голосовое сообщение', file: 'sound/янат.mp3', time: '0:16' }
             ]
         },
-        'Зария': {
-            type: 'audio',
-            items: [
-                { name: 'Голосовое сообщение', file: 'sound/янат.mp3', time: '0:16' }
-            ]
-        },
+       
         'Яна г': {
             type: 'audio',
             items: [
@@ -453,9 +459,9 @@ document.addEventListener('DOMContentLoaded', function () {
             type: 'video',
             file: 'video/delya.mp4'
         },
-        'Андрей': {
+        'Даша': {
             type: 'video',
-            file: 'video/andrey.mp4'
+            file: 'video/dasha.mp4'
         }
     };
 
@@ -706,7 +712,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             voiceList.innerHTML = `
                 <div class="voice-item">
-                    <div class="voice-icon">🎤</div>
+                    <div class="voice-icon">↓</div>
                     <div class="voice-info">
                         <div class="voice-name">Голосовое сообщение</div>
                         <div class="voice-time">0:30</div>
@@ -788,17 +794,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
         hideMainControls();
 
+        // сбрасываем старое аудио
+        stopCurrentMaskAudio();
+
+        // сбрасываем старое видео
+        if (maskVideo) {
+            maskVideo.pause();
+            maskVideo.currentTime = 0;
+            maskVideo.removeAttribute('src');
+            maskVideo.load();
+        }
+
+        // сбрасываем состояние видео-кнопки
+        if (currentVideoButton) {
+            currentVideoButton.textContent = '▶';
+            currentVideoButton.classList.remove('playing');
+        }
+
+        currentVideoButton = null;
+        currentVideoFile = null;
+
+        // сбрасываем центральную кнопку видео
+        if (videoStopBtn) {
+            videoStopBtn.textContent = '❚❚';
+        }
+
+        // обновляем картинку и имя
         playerLargeImage.src = mask.image;
         playerLargeImage.alt = mask.name;
         playerLargeName.textContent = mask.name;
 
-        stopCurrentMaskAudio();
+        // если был video-mode — убираем его
+        if (maskPlayerContainer) {
+            maskPlayerContainer.classList.remove('video-mode');
+        }
+
         renderMaskList(maskName);
         renderMedia(maskName);
 
         maskPlayer.classList.add('active');
     }
-
     function closeMask() {
         if (!maskPlayer) return;
 
@@ -920,3 +955,122 @@ document.addEventListener('keydown', (e) => {
     }
 });
 });
+// ============================================
+// PAGE3 SCROLL EFFECT — sticky секция
+// ============================================
+(function () {
+    const page3Wrap = document.getElementById('page3Wrap');
+    const page3 = document.getElementById('page3');
+    const circle = document.querySelector('.page3__circle');
+
+    if (!page3Wrap || !page3 || !circle) return;
+
+    function updatePage3Animation() {
+        const rect = page3Wrap.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Когда верх page3Wrap дошёл до верха экрана,
+        // начинаем считать прогресс анимации
+        const totalScrollable = page3Wrap.offsetHeight - windowHeight;
+
+        // сколько уже "проскроллено" внутри секции
+        const passed = Math.min(
+            Math.max(-rect.top, 0),
+            totalScrollable
+        );
+
+        // прогресс от 0 до 1
+        const progress = totalScrollable > 0 ? passed / totalScrollable : 0;
+
+        // масштаб круга
+        circle.style.transform = `translate(-50%, -50%) scale(${progress})`;
+
+        // смена состояния
+        if (progress >= 0.6) {
+            page3.classList.add('circle-open');
+        } else {
+            page3.classList.remove('circle-open');
+        }
+    }
+
+    window.addEventListener('scroll', updatePage3Animation);
+    window.addEventListener('resize', updatePage3Animation);
+
+    updatePage3Animation();
+})();
+(function () {
+    const page3Wrap = document.getElementById('page3Wrap');
+    const page3 = document.getElementById('page3');
+    const whiteCircle = document.querySelector('.page3__circle--white');
+    const darkCircle = document.querySelector('.page3__circle--dark');
+
+    const video = document.getElementById('page3Video');
+    const videoBtn = document.getElementById('page3VideoBtn');
+
+    if (!page3Wrap || !page3 || !whiteCircle || !darkCircle) return;
+
+    function clamp(value, min, max) {
+        return Math.min(Math.max(value, min), max);
+    }
+
+    function updatePage3Animation() {
+        const rect = page3Wrap.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        const totalScrollable = page3Wrap.offsetHeight - windowHeight;
+        const passed = clamp(-rect.top, 0, totalScrollable);
+        const progress = totalScrollable > 0 ? passed / totalScrollable : 0;
+
+        /* Этап 1: белый круг (0 -> 0.45) */
+        const whiteProgress = clamp(progress / 0.45, 0, 1);
+
+        /* Этап 2: тёмный круг (0.45 -> 0.75) */
+        const darkProgress = clamp((progress - 0.45) / 0.30, 0, 1);
+
+        whiteCircle.style.transform = `translate(-50%, -50%) scale(${whiteProgress})`;
+        darkCircle.style.transform = `translate(-50%, -50%) scale(${darkProgress})`;
+
+        page3.classList.toggle('stage-white', whiteProgress >= 0.15);
+        page3.classList.toggle('stage-dark', darkProgress >= 0.15);
+        page3.classList.toggle('stage-video', progress >= 0.78);
+
+        /* Если открутили вверх до этапа до видео — ставим видео на паузу */
+        if (progress < 0.78 && video && !video.paused) {
+            video.pause();
+            if (videoBtn) videoBtn.textContent = '▶';
+        }
+    }
+
+    window.addEventListener('scroll', updatePage3Animation);
+    window.addEventListener('resize', updatePage3Animation);
+    updatePage3Animation();
+
+    if (video && videoBtn) {
+        videoBtn.addEventListener('click', () => {
+            if (video.paused) {
+                video.play()
+                    .then(() => {
+                        videoBtn.textContent = '❚❚';
+                    })
+                    .catch(err => {
+                        console.error('Ошибка воспроизведения видео:', err);
+                    });
+            } else {
+                video.pause();
+                videoBtn.textContent = '▶';
+            }
+        });
+
+        video.addEventListener('ended', () => {
+            videoBtn.textContent = '▶';
+        });
+
+        video.addEventListener('pause', () => {
+            videoBtn.textContent = '▶';
+        });
+
+        video.addEventListener('play', () => {
+            videoBtn.textContent = '❚❚';
+        });
+    }
+})();
