@@ -420,7 +420,7 @@ body {
     transform: translate(-50%, -50%);
     margin: 0;
     padding: 12px 24px;
-    font-size: 3.2rem;
+    font-size: 2.9rem;
     font-weight: 500;
     mix-blend-mode: exclusion;
     letter-spacing: 0.1em;
@@ -615,7 +615,7 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
-    z-index: 5;
+    z-index: 20;
     padding-bottom: 120px;
     box-sizing: border-box;
 }
@@ -885,37 +885,38 @@ body {
 /* Контейнер для имени */
 .inventory-name-hover {
     position: absolute;
-    top: 55%;
     left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+
     user-select: none;
     color: #ffffff;
-    transform: translate(-50%, -50%) scale(0.8);
     font-family: 'lk', sans-serif;
     font-size: 7rem;
-    filter: drop-shadow(0 0 15px #ffffff);
     white-space: nowrap;
     pointer-events: none;
-    mix-blend-mode: exclusion;
-    z-index: 11;
+
+    z-index: 30;
     opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease, left 0.25s ease, top 0.25s ease;
+
     text-transform: uppercase;
     font-weight: bold;
+    text-shadow: 0 0 20px rgba(255,255,255,0.45);
+    mix-blend-mode: exclusion;
 }
 
 .inventory-name-hover.active {
-    opacity: 0.7; /* полупрозрачность */
+    opacity: 0.7;
     transform: translate(-50%, -50%) scale(1);
 }
 
-
-
-/* Для разных экранов */
 @media (max-width: 768px) {
     .inventory-name-hover {
         font-size: 4rem;
     }
 }
+
 /* ============================================
    MASK PLAYER (3 колонки)
    ============================================ */
@@ -1464,4 +1465,262 @@ body {
 
 .mask-horizontal-list::-webkit-scrollbar-thumb:hover {
     background: #547b93;
+}
+/* ============================================
+   PAGE3 SECTION
+   ============================================ */
+
+.page3-wrap {
+    position: relative;
+    height: 220vh; /* запас для прокрутки анимации */
+    background: #0F0F0F;
+}
+
+.page3 {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    width: 100%;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #1E1E1E 10%, #0F0F0F 100%);
+    color: #F4F1E8;
+    text-transform: uppercase;
+    font-family: 'lk', sans-serif;
+    display: flex;
+    text-align: center;
+    font-size: 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    user-select: none;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Фон */
+.page3__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Круг */
+.page3__circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 150vmax;
+    height: 150vmax;
+    background: #F4F1E8;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: center;
+    will-change: transform;
+}
+
+/* Контент */
+.page3__content {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.h2p3 {
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.page3__new-message {
+    font-size: 2rem;
+    font-family: 'mont', sans-serif;
+    margin-top: 1rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Когда круг открыт */
+.page3.circle-open .page3__content {
+    color: #1a1a1a;
+    text-transform: uppercase;
+}
+
+.page3.circle-open .page3__new-message {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .page3 {
+        font-size: 1.4rem;
+    }
+
+    .page3__new-message {
+        font-size: 1.4rem;
+    }
+}
+.page3-wrap {
+    position: relative;
+    height: 300vh; /* увеличили, чтобы хватило на 3 этап */
+    background: #0F0F0F;
+    width: 100%;
+}
+
+.page3 {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    background: radial-gradient(circle at center, #1a1a1a 0%, #1E1E1E 10%, #0F0F0F 100%);
+    color: #F4F1E8;
+    text-transform: uppercase;
+    font-family: 'lk', sans-serif;
+    display: flex;
+    text-align: center;
+    font-size: 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    user-select: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding-bottom: 120px;
+}
+
+.page3__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Базовый стиль кругов */
+.page3__circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 150vmax;
+    height: 150vmax;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: center;
+    will-change: transform;
+}
+
+/* Первый круг — белый */
+.page3__circle--white {
+    background: #FFFFFF;
+    z-index: 1;
+}
+
+/* Второй круг — цвет исходного фона */
+.page3__circle--dark {
+    background: #0F0F0F;
+    z-index: 2;
+}
+
+/* Контент */
+.page3__content {
+    position: relative;
+    z-index: 3;
+    transition: color 0.3s ease;
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.h2p3 {
+    transition: opacity 0.35s ease, color 0.35s ease, transform 0.35s ease;
+}
+
+.page3__new-message {
+    font-size: 2rem;
+    font-family: 'mont', sans-serif;
+    margin-top: 1rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Видео */
+.page3__video-block {
+    margin: 30px auto 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px) scale(0.96);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    max-width: 800px;
+    width: min(80vw, 800px);
+}
+
+.page3__video-block video {
+    width: 100%;
+    max-height: 70vh;
+    display: block;
+    border-radius: 24px;
+    background: #000;
+    border: 2px solid rgba(244, 241, 232, 0.2);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
+}
+
+.page3__video-btn {
+    margin-top: 18px;
+    padding: 10px 22px;
+    border-radius: 20px;
+    border: 1px solid #F4F1E8;
+    background: #0F0F0F;
+    color: #F4F1E8;
+    font-family: 'lk', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.page3__video-btn:hover {
+    transform: scale(1.05);
+    background: #F4F1E8;
+    color: #0F0F0F;
+}
+
+/* Этап 1: белый круг раскрылся */
+.page3.stage-white .page3__content {
+    color: #1a1a1a;
+}
+
+.page3.stage-white .page3__new-message {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Этап 2: тёмный круг сверху */
+.page3.stage-dark .page3__content {
+    color: #F4F1E8;
+}
+
+/* Этап 3: показываем видео */
+.page3.stage-video .h2p3,
+.page3.stage-video .page3__new-message {
+    opacity: 0;
+    transform: translateY(-12px);
+}
+
+.page3.stage-video .page3__video-block {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+@media (max-width: 768px) {
+    .page3 {
+        font-size: 1.4rem;
+    }
+
+    .page3__new-message {
+        font-size: 1.4rem;
+    }
+
+    .page3__video-block {
+        width: 90vw;
+    }
 }
